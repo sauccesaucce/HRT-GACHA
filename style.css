@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #e4dbd9; /* 🎨 ปรับสีให้เนียนกลืนไปกับขอบรูปตู้กาชาปอง */
+    background-color: #e9dddd; /* 🎨 ปรับสีให้เนียนกลืนไปกับขอบรูปตู้กาชาปอง */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,8 +43,8 @@ body {
     position: absolute;
     /* 📍 ขยับลงมาและเยื้องไปทางขวาให้เข้าเบ้า */
     top: 77.8%;            
-    left: 68.2%;           
-    width: 17%;          
+    left: 67.2%;           
+    width: 25%;          
     height: auto;
     cursor: pointer;
     z-index: 10;
