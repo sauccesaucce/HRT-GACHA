@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #e9dddd; /* 🎨 ปรับสีให้เนียนกลืนไปกับขอบรูปตู้กาชาปอง */
+    background-color: #e9dddd; /* 🎨 สีเนียนไปกับตู้ของคุณซอส */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,7 +41,6 @@ body {
 /* 🔘 ปุ่มที่หมุน crack.png */
 .crack-img {
     position: absolute;
-    /* 📍 ขยับลงมาและเยื้องไปทางขวาให้เข้าเบ้า */
     top: 77.3%;            
     left: 64.4%;           
     width: 25%;          
@@ -92,7 +91,6 @@ body {
     transform: translateY(0) scale(1) rotate(0deg);
 }
 
-/* ตอนลูกบอลลอยมาโชว์กลางจอ (ปรับให้ใหญ่เต็มตา) */
 .ball-img.center-stage {
     opacity: 1;
     top: 50% !important;
@@ -109,4 +107,59 @@ body {
 @keyframes ballWiggle {
     0% { transform: translate(-50%, -50%) scale(1.2) rotate(-8deg); }
     100% { transform: translate(-50%, -50%) scale(1.2) rotate(12deg); }
+}
+
+/* 🎁 กล่องเปิดผลลัพธ์ (Spring Bounce Transition) */
+.reveal-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.reveal-box.pop {
+    animation: springPop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    pointer-events: auto;
+}
+
+@keyframes springPop {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.2) rotate(-10deg);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1) rotate(3deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+}
+
+.reveal-img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 35px rgba(0,0,0,0.35));
+}
+
+.song-title {
+    margin-top: 15px;
+    font-size: 10px;
+    color: #4a4a4a;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 14px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
