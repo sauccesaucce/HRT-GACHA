@@ -18,10 +18,45 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 12px;
     width: 100%;
     max-width: 480px;
     padding: 10px;
+}
+
+/* 🖤 หัวใจดำ 8-bit เหนือตู้ */
+.hearts-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 2px;
+    user-select: none;
+}
+
+.pixel-heart {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    color: #2b2826;
+    letter-spacing: 1px;
+    opacity: 1;
+    animation: heartBlink 0.5s steps(2, start) 6 alternate;
+}
+
+/* ตั้งหน่วงเวลาให้กระพริบไล่ระดับกันทีละดวงในวิแรกๆ */
+.pixel-heart:nth-child(1) { animation-delay: 0.1s; }
+.pixel-heart:nth-child(2) { animation-delay: 0.25s; }
+.pixel-heart:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes heartBlink {
+    0% {
+        opacity: 0.1;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
 }
 
 .machine-box {
@@ -158,10 +193,10 @@ body {
     filter: drop-shadow(0 20px 35px rgba(0,0,0,0.35));
 }
 
-/* 📄 ข้อความบนแผ่นกระดาษ (ดึงลงมากลางกระดาษสีขาวพอดี) */
+/* 📄 ข้อความบนแผ่นกระดาษ */
 .paper-text {
     position: absolute;
-    top: 48.5%;             /* 📍 ขยับลงมากลางแผ่นกระดาษขาว */
+    top: 48.5%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 42%;
@@ -186,7 +221,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* 📶 กราฟฟิกคลื่นเสียง Equalizer 8-Bit ขยับได้ */
+/* 📶 กราฟฟิกคลื่นเสียง Equalizer 8-Bit */
 .sound-wave {
     display: flex;
     align-items: flex-end;
@@ -204,7 +239,6 @@ body {
     animation: bounceBar 0.8s ease-in-out infinite alternate;
 }
 
-/* จังหวะการเต้นสลับสูงต่ำของแต่ละแท่ง */
 .sound-wave span:nth-child(1) { animation-duration: 0.45s; height: 35%; }
 .sound-wave span:nth-child(2) { animation-duration: 0.65s; height: 80%; }
 .sound-wave span:nth-child(3) { animation-duration: 0.35s; height: 100%; }
