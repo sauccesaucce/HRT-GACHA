@@ -2,31 +2,41 @@ const crackBtn = document.getElementById('crackBtn');
 const gachaMachine = document.getElementById('gachaMachine');
 const gachaBall = document.getElementById('gachaBall');
 
+// 1. โหลดไฟล์เสียงล่วงหน้า
+const spinAudio = new Audio('spin.wav');
+spinAudio.preload = 'auto';
+
 let isSpinning = false;
 
 crackBtn.addEventListener('click', () => {
     if (isSpinning) return; 
     isSpinning = true;
 
-    // 1. หมุนปุ่มคันโยก
+    // 2. เล่นเสียงทันทีที่จิ้มปุ่มหมุน
+    spinAudio.currentTime = 0;
+    spinAudio.play().catch(error => {
+        console.log("Audio play error:", error);
+    });
+
+    // 3. หมุนปุ่มคันโยก
     crackBtn.classList.add('spinning');
 
-    // 2. ตู้เริ่มเขย่า
+    // 4. ตู้เริ่มเขย่า
     setTimeout(() => {
         gachaMachine.classList.add('shaking');
     }, 200);
 
-    // 3. หยุดหมุน + ลูกบอลหล่น
+    // 5. หยุดหมุน + ลูกบอลหล่น
     setTimeout(() => {
         gachaMachine.classList.remove('shaking');
         gachaBall.classList.remove('center-stage', 'ball-shake');
         gachaBall.classList.add('drop');
 
-        // 4. ลูกบอลพุ่งมากลางจอ
+        // 6. ลูกบอลพุ่งมากลางจอ
         setTimeout(() => {
             gachaBall.classList.add('center-stage');
 
-            // 5. ลูกบอลเขย่าดุ๊กดิ๊ก
+            // 7. ลูกบอลเขย่าดุ๊กดิ๊ก
             setTimeout(() => {
                 gachaBall.classList.add('ball-shake');
 
@@ -51,16 +61,3 @@ function resetGacha() {
         isSpinning = false;
     }, 400);
 }
-const spinAudio = new Audio('spin.wav');
-
-
-crackBtn.addEventListener('click', () => {
-    if (isSpinning) return;
-    isSpinning = true;
-
-    // เล่นเสียงหมุนแกร๊กๆ ทันที
-    spinAudio.currentTime = 0;
-    spinAudio.play();
-
-    // ... แอนิเมชันหมุนต่อตามปกติ ...
-});
