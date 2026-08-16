@@ -39,16 +39,16 @@ body {
     display: block;
 }
 
-/* 🔘 ปุ่มที่หมุน crack.png */
+/* 🔘 ปุ่มที่หมุน (ขยับขึ้น + ไปทางขวาให้เข้าเบ้าพอดี) */
 .crack-img {
     position: absolute;
-    /* 📍 ถ้าตำแหน่งปุ่มไม่ตรงเบ้า ให้แก้ตัวเลข % ตรง top (ขึ้นลง) กับ left (ซ้ายขวา) นะคะ */
-    top: 70%;         
-    left: 56%;        
-    width: 25%; /* ขนาดของปุ่มหมุน */
+    top: 74.8%;            /* ขยับขึ้นมา */
+    left: 65.5%;           /* ขยับไปทางขวา */
+    width: 17.5%;          /* ขนาดปุ่ม */
     height: auto;
     cursor: pointer;
     z-index: 10;
+    transform: translate(-50%, -50%);
     transform-origin: center center;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -58,7 +58,7 @@ body {
 }
 
 .crack-img.spinning {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
 }
 
 .machine-box.shaking {
