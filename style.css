@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #f5f0eb; /* ปรับสีพื้นหลังที่นี่ได้น้า */
+    background-color: #e4dbd9; /* 🎨 ปรับสีให้เนียนกลืนไปกับขอบรูปตู้กาชาปอง */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,7 +24,6 @@ body {
     padding: 10px;
 }
 
-/* 🎰 กล่องคุมตู้กาชาปอง (รองรับทรง 1119x1405px) */
 .machine-box {
     position: relative;
     width: 100%;
@@ -39,12 +38,13 @@ body {
     display: block;
 }
 
-/* 🔘 ปุ่มที่หมุน (ขยับขึ้น + ไปทางขวาให้เข้าเบ้าพอดี) */
+/* 🔘 ปุ่มที่หมุน crack.png */
 .crack-img {
     position: absolute;
-    top: 74.8%;            /* ขยับขึ้นมา */
-    left: 65.5%;           /* ขยับไปทางขวา */
-    width: 17.5%;          /* ขนาดปุ่ม */
+    /* 📍 ขยับลงมาและเยื้องไปทางขวาให้เข้าเบ้า */
+    top: 77.8%;            
+    left: 68.2%;           
+    width: 17%;          
     height: auto;
     cursor: pointer;
     z-index: 10;
@@ -76,7 +76,6 @@ body {
 /* 🥚 ลูกบอลกาชาปอง ball.png */
 .ball-img {
     position: absolute;
-    /* 📍 พิกัดตอนลูกบอลซ่อนอยู่ในช่องรับของ (ก่อนกดหมุน) */
     top: 73%;           
     left: 31%;          
     width: 14%;         
@@ -89,17 +88,18 @@ body {
 
 .ball-img.drop {
     opacity: 1;
-    top: 78%; /* ตำแหน่งตอนร่วงลงมา */
+    top: 78%; 
     transform: translateY(0) scale(1) rotate(0deg);
 }
 
+/* ตอนลูกบอลลอยมาโชว์กลางจอ (ปรับให้ใหญ่เต็มตา) */
 .ball-img.center-stage {
     opacity: 1;
-    top: 38% !important;
-    left: 40% !important;
-    width: 25% !important;
-    transform: translate(-20%, -20%) scale(1.5) rotate(15deg);
-    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.25));
+    top: 50% !important;
+    left: 50% !important;
+    width: 55% !important; 
+    transform: translate(-50%, -50%) scale(1.2) rotate(10deg);
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));
 }
 
 .ball-img.ball-shake {
@@ -107,13 +107,6 @@ body {
 }
 
 @keyframes ballWiggle {
-    0% { transform: translate(-20%, -20%) scale(1.5) rotate(-10deg); }
-    100% { transform: translate(-20%, -20%) scale(1.5) rotate(15deg); }
-}
-
-.instruction {
-    font-size: 8px;
-    color: #8c827a;
-    letter-spacing: 1px;
-    text-align: center;
+    0% { transform: translate(-50%, -50%) scale(1.2) rotate(-8deg); }
+    100% { transform: translate(-50%, -50%) scale(1.2) rotate(12deg); }
 }
