@@ -3,34 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haruto Gashapon</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <div class="gacha-wrapper">
-        <div class="machine-box" id="gachaMachine">
-            <!-- 🎰 ตู้กาชาปอง -->
-            <img src="machine.png" class="machine-img" alt="Gashapon Machine">
-
-            <!-- 🔘 ปุ่มที่หมุน (crack.png) -->
-            <img src="crack.png" class="crack-img" id="crackBtn" alt="Turn Crank" title="Click to Spin!">
-
-            <!-- 🥚 ลูกบอลกาชา (ball.png) -->
-            <img src="ball.png" class="ball-img" id="gachaBall" alt="Gacha Ball">
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
-<title>HARUTO GACHAPON 🎰✨</title>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HARUTO GACHAPON 🎰✨</title>
     
     <!-- ข้อความพรีวิวเวลาส่งลิงก์ใน LINE / X / Facebook -->
@@ -43,3 +15,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+<body>
+
+    <div class="gacha-wrapper">
+        <div class="machine-box" id="gachaMachine">
+            <!-- 🎰 ตู้กาชาปอง -->
+            <img src="machine.png" class="machine-img" alt="Gashapon Machine">
+
+            <!-- 🔘 ปุ่มที่หมุน -->
+            <img src="crack.png" class="crack-img" id="crackBtn" alt="Turn Crank" title="Click to Spin!">
+
+            <!-- 🥚 ลูกบอลกาชา -->
+            <img src="ball.png" class="ball-img" id="gachaBall" alt="Gacha Ball">
+
+            <!-- 🎁 กล่องการ์ดตอนเปิดไข่ (reveal) -->
+            <div class="reveal-box" id="revealBox">
+                <img src="reveal.png" class="reveal-img" alt="Reveal Prize">
+                <div class="song-title" id="songTitle">TEST TRACK #01</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
