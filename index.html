@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HARUTO GACHAPON 🎰✨</title>
     
-    <!-- ข้อความพรีวิวเวลาส่งลิงก์ใน LINE / X / Facebook -->
+    <!-- ข้อความพรีวิวเวลาส่งลิงก์ -->
     <meta property="og:title" content="HARUTO GACHAPON 🎰🩵">
     <meta property="og:description" content="Spin the gacha to get Haruto's special cover songs!">
     <meta property="og:image" content="machine.png">
 
+    <!-- ฟอนต์ 8-Bit (Silkscreen + Press Start 2P) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,7 +21,7 @@
     <div class="gacha-wrapper">
         <div class="machine-box" id="gachaMachine">
             <!-- 🎰 ตู้กาชาปอง -->
-            <img src="machine.png" class="machine-img" alt="Gashapon Machine">
+            <img src="machine.png" class="machine-img" id="machineBg" alt="Gashapon Machine">
 
             <!-- 🔘 ปุ่มที่หมุน -->
             <img src="crack.png" class="crack-img" id="crackBtn" alt="Turn Crank" title="Click to Spin!">
@@ -28,14 +29,17 @@
             <!-- 🥚 ลูกบอลกาชา -->
             <img src="ball.png" class="ball-img" id="gachaBall" alt="Gacha Ball">
 
-            <!-- 🎁 กล่องการ์ดตอนเปิดไข่ (reveal) -->
+            <!-- 🎁 กล่องเปิดไข่และกระดาษเพลง -->
             <div class="reveal-box" id="revealBox">
                 <img src="reveal.png" class="reveal-img" alt="Reveal Prize">
-                <div class="song-title" id="songTitle">TEST TRACK #01</div>
+                <div class="paper-text" id="paperText">
+                    <span class="song-name" id="songName">open arms</span>
+                    <span class="song-deco">♫ ❤︎₊ ⊹</span>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
