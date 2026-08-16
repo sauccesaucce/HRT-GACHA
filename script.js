@@ -52,3 +52,15 @@ function resetGacha() {
     }, 400);
 }
 const spinAudio = new Audio('spin.wav');
+
+
+crackBtn.addEventListener('click', () => {
+    if (isSpinning) return;
+    isSpinning = true;
+
+    // เล่นเสียงหมุนแกร๊กๆ ทันที
+    spinAudio.currentTime = 0;
+    spinAudio.play();
+
+    // ... แอนิเมชันหมุนต่อตามปกติ ...
+});
