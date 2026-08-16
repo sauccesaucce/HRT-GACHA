@@ -44,8 +44,8 @@ body {
     position: absolute;
     /* 📍 ถ้าตำแหน่งปุ่มไม่ตรงเบ้า ให้แก้ตัวเลข % ตรง top (ขึ้นลง) กับ left (ซ้ายขวา) นะคะ */
     top: 70%;         
-    left: 55%;        
-    width: 18%; /* ขนาดของปุ่มหมุน */
+    left: 51%;        
+    width: 20%; /* ขนาดของปุ่มหมุน */
     height: auto;
     cursor: pointer;
     z-index: 10;
