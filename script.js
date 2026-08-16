@@ -51,3 +51,4 @@ function resetGacha() {
         isSpinning = false;
     }, 400);
 }
+const spinAudio = new Audio('spin.wav');
