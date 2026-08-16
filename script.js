@@ -1,5 +1,6 @@
 const crackBtn = document.getElementById('crackBtn');
 const gachaMachine = document.getElementById('gachaMachine');
+const machineBg = document.getElementById('machineBg');
 const gachaBall = document.getElementById('gachaBall');
 const revealBox = document.getElementById('revealBox');
 
@@ -7,10 +8,11 @@ const revealBox = document.getElementById('revealBox');
 const spinAudio = new Audio('spin.wav');
 spinAudio.preload = 'auto';
 
-const musicAudio = new Audio('song1.mp3'); // 🎵 เปลี่ยนเป็นชื่อไฟล์เพลงที่จะเทส
+const musicAudio = new Audio('song1.mp3');
 musicAudio.preload = 'auto';
 
 let isSpinning = false;
+let musicTimeout = null;
 
 crackBtn.addEventListener('click', () => {
     if (isSpinning) return; 
@@ -42,21 +44,25 @@ crackBtn.addEventListener('click', () => {
             setTimeout(() => {
                 gachaBall.classList.add('ball-shake');
 
-                // 7. สปริงเด้งเปิดไข่ (Spring Bounce Pop!) + เล่นเพลง
+                // 7. สปริงเด้งเปิดไข่ + ฉากหลังจาง 40% + เล่นเพลง 30 วิ
                 setTimeout(() => {
                     gachaBall.classList.remove('center-stage', 'ball-shake', 'drop');
                     gachaBall.style.opacity = '0';
                     
+                    machineBg.classList.add('dimmed');
+                    crackBtn.classList.add('dimmed');
+
                     revealBox.classList.add('pop');
                     
-                    // เล่นเพลงทดสอบ
+                    // เล่นเพลง
                     musicAudio.currentTime = 0;
                     musicAudio.play().catch(e => console.log(e));
 
-                    // จบเพลง 15 วิ ปิดอัตโนมัติ
-                    setTimeout(() => {
+                    // ปิดเสียงอัตโนมัติเมื่อครบ 30 วินาที
+                    clearTimeout(musicTimeout);
+                    musicTimeout = setTimeout(() => {
                         musicAudio.pause();
-                    }, 15000);
+                    }, 30000);
 
                 }, 900);
 
@@ -67,11 +73,15 @@ crackBtn.addEventListener('click', () => {
     }, 600);
 });
 
-// กดที่การ์ดผลลัพธ์เพื่อปิดเพลงและรอหมุนใหม่ได้ทันที
+// กดที่การ์ดเพื่อปิด และรีเซ็ตระบบพร้อมหมุนรอบใหม่
 revealBox.addEventListener('click', () => {
+    clearTimeout(musicTimeout);
     musicAudio.pause();
+    
     revealBox.classList.remove('pop');
-    crackBtn.classList.remove('spinning');
+    machineBg.classList.remove('dimmed');
+    crackBtn.classList.remove('dimmed', 'spinning');
+
     setTimeout(() => {
         isSpinning = false;
     }, 300);
