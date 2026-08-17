@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HARUTO GACHAPON 🎰✨</title>
+    <title>HRT GACHA <3 </title>
     
-    <meta property="og:title" content="HARUTO GACHAPON 🎰🩵">
+    <meta property="og:title" content="HRT GACHA <3">
     <meta property="og:description" content="Spin the gacha to get Haruto's special cover songs!">
     <meta property="og:image" content="machine.png">
 
@@ -16,30 +16,8 @@
 </head>
 <body>
 
-    <!-- 🌌 ท้องฟ้าดาวพิกเซล 8-bit แท้คมกริบ + ดาวตก -->
-    <div class="sky-stars" id="skyStars">
-        <div class="pixel-shooting-star"></div>
-
-        <!-- ดาวประกาย 8-bit แบบใหญ่ -->
-        <div class="pixel-star-big p1"></div>
-        <div class="pixel-star-big p2"></div>
-        <div class="pixel-star-big p3"></div>
-        <div class="pixel-star-big p4"></div>
-
-        <!-- ดาวกากบาท 8-bit แบบกลาง -->
-        <div class="pixel-star-cross p5"></div>
-        <div class="pixel-star-cross p6"></div>
-        <div class="pixel-star-cross p7"></div>
-        <div class="pixel-star-cross p8"></div>
-        <div class="pixel-star-cross p9"></div>
-
-        <!-- จุดพิกเซล 8-bit แบบเล็ก -->
-        <div class="pixel-star-dot p10"></div>
-        <div class="pixel-star-dot p11"></div>
-        <div class="pixel-star-dot p12"></div>
-        <div class="pixel-star-dot p13"></div>
-        <div class="pixel-star-dot p14"></div>
-    </div>
+    <!-- 📺 เส้นสแกน CRT -->
+    <div class="crt-overlay" id="crtOverlay"></div>
 
     <div class="gacha-wrapper">
         <div class="machine-box" id="gachaMachine">
@@ -50,8 +28,11 @@
             <img src="ball_white.PNG" class="ball-img" id="gachaBall" alt="Gacha Ball">
 
             <div class="reveal-box" id="revealBox">
+                <!-- ✨ แสงออร่านีออนเรืองแสงด้านหลังลูกบอล -->
+                <div class="neon-glow" id="neonGlow"></div>
+
                 <!-- 🎁 รูปตอนเปิด -->
-                <img src="reveal_white.PNG" class="reveal-img" id="revealImg" alt="Reveal Prize">
+                <img src="reveal_white.png" class="reveal-img" id="revealImg" alt="Reveal Prize">
                 
                 <div class="paper-text" id="paperText">
                     <span class="song-name" id="songName">TITLE</span>
