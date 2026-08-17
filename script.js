@@ -5,6 +5,7 @@ const gachaBall = document.getElementById('gachaBall');
 const revealBox = document.getElementById('revealBox');
 const revealImg = document.getElementById('revealImg');
 const songNameText = document.getElementById('songName');
+const skyStars = document.getElementById('skyStars');
 
 const spinAudio = new Audio('spin.wav');
 spinAudio.preload = 'auto';
@@ -44,11 +45,9 @@ crackBtn.addEventListener('click', () => {
     if (isSpinning) return; 
     isSpinning = true;
 
-    // สุ่มของรางวัล
     const randomIndex = Math.floor(Math.random() * gachaItems.length);
     const selectedItem = gachaItems[randomIndex];
 
-    // รีเซ็ตสถานะลูกบอลให้พร้อมแสดง
     gachaBall.style.opacity = '';
     gachaBall.className = 'ball-img';
     gachaBall.src = selectedItem.ballImg;
@@ -62,30 +61,24 @@ crackBtn.addEventListener('click', () => {
     currentMusic = new Audio(selectedItem.audio);
     currentMusic.preload = 'auto';
 
-    // 1. หมุนปุ่ม + เล่นเสียง
     spinAudio.currentTime = 0;
     spinAudio.play().catch(e => console.log(e));
     crackBtn.classList.add('spinning');
 
-    // 2. ตู้สั่น
     setTimeout(() => {
         gachaMachine.classList.add('shaking');
     }, 200);
 
-    // 3. หยุดสั่น + บอลร่วงลงมาที่ช่องรับไข่
     setTimeout(() => {
         gachaMachine.classList.remove('shaking');
         gachaBall.classList.add('drop');
 
-        // 4. บอลพุ่งขยายใหญ่ขึ้นมาตรงกลาง
         setTimeout(() => {
             gachaBall.classList.add('center-stage');
 
-            // 5. บอลสั่นลุ้นรางวัล
             setTimeout(() => {
                 gachaBall.classList.add('ball-shake');
 
-                // 6. ซ่อนบอล ซ่อนตู้ แล้วเปิดกระดาษเฉลยเพลง!
                 setTimeout(() => {
                     gachaBall.classList.remove('center-stage', 'ball-shake', 'drop');
                     gachaBall.style.opacity = '0';
@@ -93,7 +86,9 @@ crackBtn.addEventListener('click', () => {
                     machineBg.classList.add('hidden');
                     crackBtn.classList.add('hidden');
 
+                    // เปิดไข่และเปิดท้องฟ้าดวงดาว + ดาวตก
                     revealBox.classList.add('pop');
+                    skyStars.classList.add('active');
                     
                     currentMusic.currentTime = 0;
                     currentMusic.play().catch(e => console.log(e));
@@ -105,7 +100,7 @@ crackBtn.addEventListener('click', () => {
 
                 }, 900);
             }, 600);
-        }, 600);
+        }, 500);
     }, 600);
 });
 
@@ -120,8 +115,8 @@ function resetGacha() {
     }
     
     revealBox.classList.remove('pop');
+    skyStars.classList.remove('active'); // ซ่อนดาวกลับไป
     
-    // โชว์ตู้กลับคืนมา
     machineBg.classList.remove('hidden');
     crackBtn.classList.remove('hidden', 'spinning');
 
