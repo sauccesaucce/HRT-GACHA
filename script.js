@@ -6,7 +6,6 @@ const revealBox = document.getElementById('revealBox');
 const revealImg = document.getElementById('revealImg');
 const songNameText = document.getElementById('songName');
 
-// โหลดไฟล์เสียงหมุนตู้
 const spinAudio = new Audio('spin.wav');
 spinAudio.preload = 'auto';
 
@@ -14,7 +13,6 @@ let currentMusic = null;
 let isSpinning = false;
 let musicTimeout = null;
 
-// ฐานข้อมูลเพลง 4 สี (ชื่อไฟล์ตรงกับรูปเป๊ะๆ)
 const gachaItems = [
     {
         title: "opens arm",
@@ -26,7 +24,7 @@ const gachaItems = [
         title: "better",
         audio: "song2.mp3",
         ballImg: "ball_neonblue.png",
-        revealImg: "reveal_neonblue.jpg" // อันนี้เป็น jpg นะคะ
+        revealImg: "reveal_neonblue.jpg"
     },
     {
         title: "gold chain",
@@ -50,54 +48,56 @@ crackBtn.addEventListener('click', () => {
     const randomIndex = Math.floor(Math.random() * gachaItems.length);
     const selectedItem = gachaItems[randomIndex];
 
-    // เซ็ตภาพบอลและข้อมูลล่วงหน้า
+    // รีเซ็ตสถานะลูกบอลให้พร้อมแสดง
+    gachaBall.style.opacity = '';
+    gachaBall.className = 'ball-img';
     gachaBall.src = selectedItem.ballImg;
+    
     revealImg.src = selectedItem.revealImg;
     songNameText.innerText = selectedItem.title;
 
-    // เตรียมไฟล์เพลง
     if (currentMusic) {
         currentMusic.pause();
     }
     currentMusic = new Audio(selectedItem.audio);
     currentMusic.preload = 'auto';
 
-    // เริ่มแอนิเมชัน
+    // 1. หมุนปุ่ม + เล่นเสียง
     spinAudio.currentTime = 0;
     spinAudio.play().catch(e => console.log(e));
     crackBtn.classList.add('spinning');
 
+    // 2. ตู้สั่น
     setTimeout(() => {
         gachaMachine.classList.add('shaking');
     }, 200);
 
+    // 3. หยุดสั่น + บอลร่วงลงมาที่ช่องรับไข่
     setTimeout(() => {
         gachaMachine.classList.remove('shaking');
-        gachaBall.classList.remove('center-stage', 'ball-shake');
         gachaBall.classList.add('drop');
 
+        // 4. บอลพุ่งขยายใหญ่ขึ้นมาตรงกลาง
         setTimeout(() => {
             gachaBall.classList.add('center-stage');
 
+            // 5. บอลสั่นลุ้นรางวัล
             setTimeout(() => {
                 gachaBall.classList.add('ball-shake');
 
+                // 6. ซ่อนบอล ซ่อนตู้ แล้วเปิดกระดาษเฉลยเพลง!
                 setTimeout(() => {
-                    // ปิดบอลกลิ้ง เปิดไข่เด้ง
                     gachaBall.classList.remove('center-stage', 'ball-shake', 'drop');
                     gachaBall.style.opacity = '0';
                     
-                    // ซ่อนตู้และปุ่ม (เหลือแต่พื้นดำ)
                     machineBg.classList.add('hidden');
                     crackBtn.classList.add('hidden');
 
                     revealBox.classList.add('pop');
                     
-                    // เล่นเพลง
                     currentMusic.currentTime = 0;
                     currentMusic.play().catch(e => console.log(e));
 
-                    // ปิดอัตโนมัติเมื่อครบ 30 วินาที
                     clearTimeout(musicTimeout);
                     musicTimeout = setTimeout(() => {
                         resetGacha();
@@ -105,11 +105,10 @@ crackBtn.addEventListener('click', () => {
 
                 }, 900);
             }, 600);
-        }, 500);
+        }, 600);
     }, 600);
 });
 
-// กดที่หน้าจอเพื่อปิดก่อน 30 วินาที
 revealBox.addEventListener('click', () => {
     resetGacha();
 });
@@ -122,7 +121,7 @@ function resetGacha() {
     
     revealBox.classList.remove('pop');
     
-    // โชว์ตู้กลับมา
+    // โชว์ตู้กลับคืนมา
     machineBg.classList.remove('hidden');
     crackBtn.classList.remove('hidden', 'spinning');
 
