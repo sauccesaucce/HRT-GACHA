@@ -1,11 +1,13 @@
 const crackBtn = document.getElementById('crackBtn');
 const gachaMachine = document.getElementById('gachaMachine');
 const machineBg = document.getElementById('machineBg');
+const machineSign = document.getElementById('machineSign');
 const gachaBall = document.getElementById('gachaBall');
 const revealBox = document.getElementById('revealBox');
 const revealImg = document.getElementById('revealImg');
 const songNameText = document.getElementById('songName');
 const crtOverlay = document.getElementById('crtOverlay');
+const shootingStars = document.getElementById('shootingStars');
 const neonGlow = document.getElementById('neonGlow');
 
 const spinAudio = new Audio('spin.wav');
@@ -15,7 +17,6 @@ let currentMusic = null;
 let isSpinning = false;
 let musicTimeout = null;
 
-// รายชื่อแทร็กทั้งหมด (ตรงตามชื่อไฟล์ล่าสุด)
 const gachaItems = [
     {
         title: "opens arm",
@@ -46,7 +47,7 @@ const gachaItems = [
         glowColor: "rgba(138, 43, 226, 0.85)"
     },
     {
-        title: "★ SPECIAL TRACK ★", // แทร็ก SSR แสงทอง
+        title: "★ SPECIAL TRACK ★",
         audio: "song5.mp3",
         ballImg: "ball_ssr.png",
         revealImg: "reveal_ssr.png",
@@ -98,11 +99,14 @@ crackBtn.addEventListener('click', () => {
                     gachaBall.classList.remove('center-stage', 'ball-shake', 'drop');
                     gachaBall.style.opacity = '0';
                     
+                    // ซ่อนตู้ ป้ายชื่อ และคันโยก
                     machineBg.classList.add('hidden');
+                    machineSign.classList.add('hidden');
                     crackBtn.classList.add('hidden');
 
                     revealBox.classList.add('pop');
                     crtOverlay.classList.add('active');
+                    shootingStars.classList.add('active');
                     
                     currentMusic.currentTime = 0;
                     currentMusic.play().catch(e => console.log(e));
@@ -130,11 +134,14 @@ function resetGacha() {
     
     revealBox.classList.remove('pop');
     crtOverlay.classList.remove('active');
+    shootingStars.classList.remove('active');
     
+    // คืนค่าตู้ ป้ายชื่อ และคันโยกกลับมา
     machineBg.classList.remove('hidden');
+    machineSign.classList.remove('hidden');
     crackBtn.classList.remove('hidden', 'spinning');
 
     setTimeout(() => {
         isSpinning = false;
     }, 300);
-} 
+}
