@@ -167,6 +167,7 @@ body {
     pointer-events: none;
 }
 
+/* 🔘 คันโยกหมุนกาชา */
 .crack-img {
     position: absolute;
     top: 77.3%;            
@@ -286,52 +287,52 @@ body {
     z-index: 5;
 }
 
+/* 📜 ตำแหน่งกระดาษจัดกึ่งกลางพอดี ไม่กองล่าง */
 .paper-text {
     position: absolute;
-    top: 50%;
+    top: 48%; /* ขยับขึ้นมาตรงกลางพอดี */
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 46%;
+    width: 48%;
     text-align: center;
     color: #1a1a1a;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 8px; /* ระยะห่างระหว่างชื่อเพลงกับหลอดเสียงกำลังสวย */
     pointer-events: none;
     z-index: 10;
 }
 
-/* 👾 ตัวหนังสือพิกเซลบนกระดาษ */
+/* 👾 ฟอนต์ชื่อเพลง ขยายไซส์ให้ชัดและเด่นขึ้น */
 .song-name {
     font-family: 'Press Start 2P', monospace;
-    font-size: 7px;
+    font-size: 8.5px;
     font-weight: 700;
     line-height: 1.4;
     text-transform: uppercase;
     word-break: break-word;
-    letter-spacing: -0.2px;
+    letter-spacing: 0.5px;
 }
 
 .feat-artist {
     display: block;
-    font-size: 5px;
-    margin-top: 3px;
-    opacity: 0.8;
+    font-size: 5.5px;
+    margin-top: 4px;
+    opacity: 0.85;
 }
 
-/* 🎚️ หลอด Volume แนวนอนแบบหนา */
+/* 🎚️ หลอด Volume แนวนอนแบบหนา คมชัดสไตล์ 8-bit */
 .pixel-vol-bar {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 3px;
     padding: 3px 5px;
-    background: rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.06);
     border: 1.5px solid #222222;
     border-radius: 2px;
-    margin-top: 2px;
 }
 
 .pixel-vol-bar span {
@@ -354,44 +355,4 @@ body {
 @keyframes pixelVolAnim {
     0% { opacity: 0.15; }
     100% { opacity: 1; }
-}
-/* เพิ่มเติมใน style.css */
-
-/* 💖 หัวใจ 8-bit กระพริบ */
-.heart-container {
-    display: flex;
-    justify-content: center;
-    gap: 4px;
-    margin-bottom: 5px;
-}
-
-.pixel-heart {
-    width: 8px;
-    height: 8px;
-    background-color: #ff0055;
-    /* สร้างรูปหัวใจด้วย clip-path */
-    clip-path: path('M4 2.5 C 4 1.5 3 0.5 2 0.5 C 0.5 0.5 0 2 0 3.5 C 0 5 2 7 4 9 C 6 7 8 5 8 3.5 C 8 2 7.5 0.5 6 0.5 C 5 0.5 4 1.5 4 2.5 Z');
-    animation: heartBlink 0.8s steps(2, start) infinite;
-}
-
-@keyframes heartBlink {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.3; transform: scale(0.9); }
-}
-
-.paper-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 46%;
-    text-align: center;
-    color: #1a1a1a;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px; /* ลด gap ลงนิดนึงให้ดูแน่นขึ้น */
-    pointer-events: none;
-    z-index: 10;
 }
