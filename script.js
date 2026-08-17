@@ -19,21 +19,21 @@ let musicTimeout = null;
 
 const gachaItems = [
     {
-        title: "opens arm",
+        title: "OPEN ARMS<br><span class='feat-artist'>ft.JEONGWOO</span>",
         audio: "song1.mp3",
         ballImg: "ball_white.PNG",
         revealImg: "reveal_white.png",
         glowColor: "rgba(255, 255, 255, 0.85)"
     },
     {
-        title: "better",
+        title: "BETTER",
         audio: "song2.mp3",
         ballImg: "ball_neonblue.png",
         revealImg: "reveal_neonblue.png",
         glowColor: "rgba(0, 240, 255, 0.85)"
     },
     {
-        title: "gold chain",
+        title: "GOLD CHAIN",
         audio: "song3.mp3",
         ballImg: "ball_neonpink.png",
         revealImg: "reveal_neonpink.png",
@@ -67,7 +67,7 @@ crackBtn.addEventListener('click', () => {
     gachaBall.src = selectedItem.ballImg;
     
     revealImg.src = selectedItem.revealImg;
-    songNameText.innerText = selectedItem.title;
+    songNameText.innerHTML = selectedItem.title;
 
     neonGlow.style.background = `radial-gradient(circle, ${selectedItem.glowColor} 0%, rgba(0,0,0,0) 70%)`;
 
@@ -99,7 +99,6 @@ crackBtn.addEventListener('click', () => {
                     gachaBall.classList.remove('center-stage', 'ball-shake', 'drop');
                     gachaBall.style.opacity = '0';
                     
-                    // ซ่อนตู้ ป้ายชื่อ และคันโยก
                     machineBg.classList.add('hidden');
                     machineSign.classList.add('hidden');
                     crackBtn.classList.add('hidden');
@@ -136,7 +135,6 @@ function resetGacha() {
     crtOverlay.classList.remove('active');
     shootingStars.classList.remove('active');
     
-    // คืนค่าตู้ ป้ายชื่อ และคันโยกกลับมา
     machineBg.classList.remove('hidden');
     machineSign.classList.remove('hidden');
     crackBtn.classList.remove('hidden', 'spinning');
