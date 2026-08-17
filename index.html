@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HARUTO GACHAPON 🎰✨</title>
     
-    <!-- ข้อความพรีวิวเวลาส่งลิงก์ -->
     <meta property="og:title" content="HARUTO GACHAPON 🎰🩵">
     <meta property="og:description" content="Spin the gacha to get Haruto's special cover songs!">
     <meta property="og:image" content="machine.png">
 
-    <!-- ฟอนต์ 8-Bit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
@@ -19,7 +17,6 @@
 <body>
 
     <div class="gacha-wrapper">
-        <!-- 🖤 หัวใจดำ 8-bit กระพริบตอนเข้าเว็บ -->
         <div class="hearts-header">
             <span class="pixel-heart">♥</span>
             <span class="pixel-heart">♥</span>
@@ -27,28 +24,19 @@
         </div>
 
         <div class="machine-box" id="gachaMachine">
-            <!-- 🎰 ตู้กาชาปอง -->
             <img src="machine.png" class="machine-img" id="machineBg" alt="Gashapon Machine">
-
-            <!-- 🔘 ปุ่มที่หมุน -->
             <img src="crack.png" class="crack-img" id="crackBtn" alt="Turn Crank" title="Click to Spin!">
+            
+            <img src="ball_white.PNG" class="ball-img" id="gachaBall" alt="Gacha Ball">
 
-            <!-- 🥚 ลูกบอลกาชา -->
-            <img src="ball.png" class="ball-img" id="gachaBall" alt="Gacha Ball">
-
-            <!-- 🎁 กล่องเปิดไข่และกระดาษเพลง -->
             <div class="reveal-box" id="revealBox">
-                <img src="reveal.png" class="reveal-img" alt="Reveal Prize">
+                <img src="reveal_white.PNG" class="reveal-img" id="revealImg" alt="Reveal Prize">
+                
                 <div class="paper-text" id="paperText">
-                    <span class="song-name" id="songName">open arms</span>
+                    <span class="song-name" id="songName">TITLE</span>
                     
-                    <!-- 📶 คลื่นเสียง 8-bit -->
                     <div class="sound-wave">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
                     </div>
                 </div>
             </div>
@@ -57,4 +45,4 @@
 
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
