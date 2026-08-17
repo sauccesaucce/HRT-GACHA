@@ -5,7 +5,8 @@ const gachaBall = document.getElementById('gachaBall');
 const revealBox = document.getElementById('revealBox');
 const revealImg = document.getElementById('revealImg');
 const songNameText = document.getElementById('songName');
-const skyStars = document.getElementById('skyStars');
+const crtOverlay = document.getElementById('crtOverlay');
+const neonGlow = document.getElementById('neonGlow');
 
 const spinAudio = new Audio('spin.wav');
 spinAudio.preload = 'auto';
@@ -14,30 +15,42 @@ let currentMusic = null;
 let isSpinning = false;
 let musicTimeout = null;
 
+// รายชื่อแทร็กทั้งหมด (ตรงตามชื่อไฟล์ล่าสุด)
 const gachaItems = [
     {
         title: "opens arm",
         audio: "song1.mp3",
         ballImg: "ball_white.PNG",
-        revealImg: "reveal_white.PNG"
+        revealImg: "reveal_white.png",
+        glowColor: "rgba(255, 255, 255, 0.85)"
     },
     {
         title: "better",
         audio: "song2.mp3",
         ballImg: "ball_neonblue.png",
-        revealImg: "reveal_neonblue.jpg"
+        revealImg: "reveal_neonblue.png",
+        glowColor: "rgba(0, 240, 255, 0.85)"
     },
     {
         title: "gold chain",
         audio: "song3.mp3",
         ballImg: "ball_neonpink.png",
-        revealImg: "reveal_neonpink.PNG"
+        revealImg: "reveal_neonpink.png",
+        glowColor: "rgba(255, 0, 127, 0.85)"
     },
     {
         title: "君のまま",
         audio: "song4.mp3",
         ballImg: "ball_black.png",
-        revealImg: "reveal_black.PNG"
+        revealImg: "reveal_black.png",
+        glowColor: "rgba(138, 43, 226, 0.85)"
+    },
+    {
+        title: "★ SPECIAL TRACK ★", // แทร็ก SSR แสงทอง
+        audio: "song5.mp3",
+        ballImg: "ball_ssr.png",
+        revealImg: "reveal_ssr.png",
+        glowColor: "rgba(255, 215, 0, 0.95)"
     }
 ];
 
@@ -54,6 +67,8 @@ crackBtn.addEventListener('click', () => {
     
     revealImg.src = selectedItem.revealImg;
     songNameText.innerText = selectedItem.title;
+
+    neonGlow.style.background = `radial-gradient(circle, ${selectedItem.glowColor} 0%, rgba(0,0,0,0) 70%)`;
 
     if (currentMusic) {
         currentMusic.pause();
@@ -86,9 +101,8 @@ crackBtn.addEventListener('click', () => {
                     machineBg.classList.add('hidden');
                     crackBtn.classList.add('hidden');
 
-                    // เปิดไข่และเปิดท้องฟ้าดวงดาว + ดาวตก
                     revealBox.classList.add('pop');
-                    skyStars.classList.add('active');
+                    crtOverlay.classList.add('active');
                     
                     currentMusic.currentTime = 0;
                     currentMusic.play().catch(e => console.log(e));
@@ -115,7 +129,7 @@ function resetGacha() {
     }
     
     revealBox.classList.remove('pop');
-    skyStars.classList.remove('active'); // ซ่อนดาวกลับไป
+    crtOverlay.classList.remove('active');
     
     machineBg.classList.remove('hidden');
     crackBtn.classList.remove('hidden', 'spinning');
