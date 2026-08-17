@@ -3,86 +3,130 @@ const gachaMachine = document.getElementById('gachaMachine');
 const machineBg = document.getElementById('machineBg');
 const gachaBall = document.getElementById('gachaBall');
 const revealBox = document.getElementById('revealBox');
+const revealImg = document.getElementById('revealImg');
+const songNameText = document.getElementById('songName');
 
-// โหลดไฟล์เสียง
+// โหลดไฟล์เสียงหมุนตู้
 const spinAudio = new Audio('spin.wav');
 spinAudio.preload = 'auto';
 
-const musicAudio = new Audio('song1.mp3');
-musicAudio.preload = 'auto';
-
+let currentMusic = null;
 let isSpinning = false;
 let musicTimeout = null;
+
+// ฐานข้อมูลเพลง 4 สี (ชื่อไฟล์ตรงกับรูปเป๊ะๆ)
+const gachaItems = [
+    {
+        title: "opens arm",
+        audio: "song1.mp3",
+        ballImg: "ball_white.PNG",
+        revealImg: "reveal_white.PNG"
+    },
+    {
+        title: "better",
+        audio: "song2.mp3",
+        ballImg: "ball_neonblue.png",
+        revealImg: "reveal_neonblue.jpg" // อันนี้เป็น jpg นะคะ
+    },
+    {
+        title: "gold chain",
+        audio: "song3.mp3",
+        ballImg: "ball_neonpink.png",
+        revealImg: "reveal_neonpink.PNG"
+    },
+    {
+        title: "君のまま",
+        audio: "song4.mp3",
+        ballImg: "ball_black.png",
+        revealImg: "reveal_black.PNG"
+    }
+];
 
 crackBtn.addEventListener('click', () => {
     if (isSpinning) return; 
     isSpinning = true;
 
-    // 1. เล่นเสียงหมุนตู้
+    // สุ่มของรางวัล
+    const randomIndex = Math.floor(Math.random() * gachaItems.length);
+    const selectedItem = gachaItems[randomIndex];
+
+    // เซ็ตภาพบอลและข้อมูลล่วงหน้า
+    gachaBall.src = selectedItem.ballImg;
+    revealImg.src = selectedItem.revealImg;
+    songNameText.innerText = selectedItem.title;
+
+    // เตรียมไฟล์เพลง
+    if (currentMusic) {
+        currentMusic.pause();
+    }
+    currentMusic = new Audio(selectedItem.audio);
+    currentMusic.preload = 'auto';
+
+    // เริ่มแอนิเมชัน
     spinAudio.currentTime = 0;
     spinAudio.play().catch(e => console.log(e));
-
-    // 2. หมุนคันโยก
     crackBtn.classList.add('spinning');
 
-    // 3. ตู้เขย่า
     setTimeout(() => {
         gachaMachine.classList.add('shaking');
     }, 200);
 
-    // 4. บอลหล่น
     setTimeout(() => {
         gachaMachine.classList.remove('shaking');
         gachaBall.classList.remove('center-stage', 'ball-shake');
         gachaBall.classList.add('drop');
 
-        // 5. บอลพุ่งมากลางจอ
         setTimeout(() => {
             gachaBall.classList.add('center-stage');
 
-            // 6. บอลสั่นเตรียมระเบิด
             setTimeout(() => {
                 gachaBall.classList.add('ball-shake');
 
-                // 7. สปริงเด้งเปิดไข่ + ฉากหลังจาง 40% + เล่นเพลง 30 วิ
                 setTimeout(() => {
+                    // ปิดบอลกลิ้ง เปิดไข่เด้ง
                     gachaBall.classList.remove('center-stage', 'ball-shake', 'drop');
                     gachaBall.style.opacity = '0';
                     
-                    machineBg.classList.add('dimmed');
-                    crackBtn.classList.add('dimmed');
+                    // ซ่อนตู้และปุ่ม (เหลือแต่พื้นดำ)
+                    machineBg.classList.add('hidden');
+                    crackBtn.classList.add('hidden');
 
                     revealBox.classList.add('pop');
                     
                     // เล่นเพลง
-                    musicAudio.currentTime = 0;
-                    musicAudio.play().catch(e => console.log(e));
+                    currentMusic.currentTime = 0;
+                    currentMusic.play().catch(e => console.log(e));
 
-                    // ปิดเสียงอัตโนมัติเมื่อครบ 30 วินาที
+                    // ปิดอัตโนมัติเมื่อครบ 30 วินาที
                     clearTimeout(musicTimeout);
                     musicTimeout = setTimeout(() => {
-                        musicAudio.pause();
+                        resetGacha();
                     }, 30000);
 
                 }, 900);
-
             }, 600);
-
         }, 500);
-
     }, 600);
 });
 
-// กดที่การ์ดเพื่อปิด และรีเซ็ตระบบพร้อมหมุนรอบใหม่
+// กดที่หน้าจอเพื่อปิดก่อน 30 วินาที
 revealBox.addEventListener('click', () => {
+    resetGacha();
+});
+
+function resetGacha() {
     clearTimeout(musicTimeout);
-    musicAudio.pause();
+    if (currentMusic) {
+        currentMusic.pause();
+    }
     
     revealBox.classList.remove('pop');
-    machineBg.classList.remove('dimmed');
-    crackBtn.classList.remove('dimmed', 'spinning');
+    
+    // โชว์ตู้กลับมา
+    machineBg.classList.remove('hidden');
+    crackBtn.classList.remove('hidden', 'spinning');
 
     setTimeout(() => {
         isSpinning = false;
     }, 300);
-});
+}
