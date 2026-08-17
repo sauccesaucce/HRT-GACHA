@@ -231,3 +231,4 @@ body {
     0% { transform: translate(-50%, -50%) scale(0.98) rotate(-0.5deg); }
     100% { transform: translate(-50%, -50%) scale(1.02) rotate(0.5deg); }
 }
+
