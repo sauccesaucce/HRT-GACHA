@@ -137,4 +137,4 @@ function resetGacha() {
     setTimeout(() => {
         isSpinning = false;
     }, 300);
-}
+} 
