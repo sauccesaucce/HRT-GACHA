@@ -15,7 +15,6 @@ body {
     position: relative;
 }
 
-/* 🌌 ท้องฟ้าดวงดาวเต็มจอ */
 .sky-stars {
     position: fixed;
     top: 0;
@@ -32,9 +31,6 @@ body {
     opacity: 1;
 }
 
-/* 👾 รูปแบบดาวพิกเซล 8-BIT แท้ (ขึ้นรูปด้วย Pixel Grid) */
-
-/* 1. ดาวประกาย 8-bit ใหญ่ (5x5 Pixels) */
 .pixel-star-big {
     position: absolute;
     width: 3px;
@@ -44,7 +40,7 @@ body {
         0 -3px 0 #ffffff, 0 -6px 0 #ffffff,
         0 3px 0 #ffffff, 0 6px 0 #ffffff,
         -3px 0 0 #ffffff, -6px 0 0 #ffffff,
-        3px 0 0 #ffffff, 3px 0 0 #ffffff, 6px 0 0 #ffffff,
+        3px 0 0 #ffffff, 6px 0 0 #ffffff,
         -3px -3px 0 rgba(255,255,255,0.7),
         3px -3px 0 rgba(255,255,255,0.7),
         -3px 3px 0 rgba(255,255,255,0.7),
@@ -53,7 +49,6 @@ body {
     animation: pixelBlink 1.6s steps(2, start) infinite alternate;
 }
 
-/* 2. ดาวกากบาท 8-bit กลาง (3x3 Pixels) */
 .pixel-star-cross {
     position: absolute;
     width: 3px;
@@ -68,7 +63,6 @@ body {
     animation: pixelBlink 1.3s steps(2, start) infinite alternate;
 }
 
-/* 3. จุดดาวพิกเซลจิ๋ว (1x1 Square Pixel) */
 .pixel-star-dot {
     position: absolute;
     width: 3px;
@@ -78,7 +72,6 @@ body {
     animation: pixelBlink 2s steps(2, start) infinite alternate;
 }
 
-/* กระจายตำแหน่งดาวรอบหน้าจอ */
 .p1  { top: 12%; left: 18%; animation-delay: 0.1s; }
 .p2  { top: 18%; right: 16%; animation-delay: 0.6s; }
 .p3  { bottom: 22%; left: 14%; animation-delay: 0.9s; }
@@ -102,7 +95,6 @@ body {
     100% { opacity: 1; transform: scale(1.1); }
 }
 
-/* 🌠 ดาวตก 8-Bit ขั้นบันไดพิกเซล พุ่งผ่านทุก 6 วินาที */
 .pixel-shooting-star {
     position: absolute;
     top: 14%;
