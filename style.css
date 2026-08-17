@@ -355,3 +355,43 @@ body {
     0% { opacity: 0.15; }
     100% { opacity: 1; }
 }
+/* เพิ่มเติมใน style.css */
+
+/* 💖 หัวใจ 8-bit กระพริบ */
+.heart-container {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 5px;
+}
+
+.pixel-heart {
+    width: 8px;
+    height: 8px;
+    background-color: #ff0055;
+    /* สร้างรูปหัวใจด้วย clip-path */
+    clip-path: path('M4 2.5 C 4 1.5 3 0.5 2 0.5 C 0.5 0.5 0 2 0 3.5 C 0 5 2 7 4 9 C 6 7 8 5 8 3.5 C 8 2 7.5 0.5 6 0.5 C 5 0.5 4 1.5 4 2.5 Z');
+    animation: heartBlink 0.8s steps(2, start) infinite;
+}
+
+@keyframes heartBlink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.9); }
+}
+
+.paper-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 46%;
+    text-align: center;
+    color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px; /* ลด gap ลงนิดนึงให้ดูแน่นขึ้น */
+    pointer-events: none;
+    z-index: 10;
+}
